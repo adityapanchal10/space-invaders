@@ -3,6 +3,7 @@ import turtle
 import os
 import math
 import random
+from playsound import playsound
 
 #setting up the screen
 win = turtle.Screen()
@@ -124,6 +125,7 @@ def fire_bullet():
 	bullet.setposition(player.xcor(), player.ycor() + 10)
 	bullet.showturtle()
 	bullets.append(bullet)
+	playsound('Sounds/bullet.wav')
 
 def isCollision(t1, t2):
 	distance = math.sqrt(math.pow(t1.xcor() - t2.xcor(), 2) + math.pow(t1.ycor() - t2.ycor(), 2))
@@ -170,6 +172,7 @@ while True:
 				#resetting bullet
 				bullet.hideturtle()
 				bullets.remove(bullet)
+				playsound('Sounds/collision.wav')
 				#bulletstate = "ready"
 				#bullet.setposition(0, -400)
 				#resetting invader
@@ -184,6 +187,7 @@ while True:
 
 		if isCollision(player, enemy):
 			flag = 1
+			playsound('Sounds/collision.wav')
 			break
 
 		if enemy.ycor() <= player.ycor():
